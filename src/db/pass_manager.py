@@ -1,5 +1,5 @@
 import json
-
+from json.decoder import JSONDecodeError
 from core.logger import logger
 
 
@@ -9,13 +9,17 @@ class PassDBManager:
         new_data = {website.lower(): {"email": email, "password": password}}
         try:
             with open("./src/db/base/passwords.json", "r") as data_file:
+                json.load(data_file)
+        except (FileNotFoundError, JSONDecodeError) as Err:
+            logger.error(Err)
+            with open("./src/db/base/passwords.json", "w") as data_file:
+                data_file.write("{}")
+        finally:
+            with open("./src/db/base/passwords.json", "r") as data_file:
                 data = json.load(data_file)
                 data.update(new_data)
-        except FileNotFoundError as Err:
-            logger.error(Err)
-
-        with open("./src/db/base/passwords.json", "w") as data_file:
-            json.dump(data, data_file, indent=4)
+            with open("./src/db/base/passwords.json", "w") as data_file:
+                json.dump(data, data_file, indent=4)
 
     @staticmethod
     def delete_pass(website):
@@ -24,11 +28,13 @@ class PassDBManager:
                 data = json.load(data_file)
                 if website.lower() in data:
                     del data[website.lower()]
-        except FileNotFoundError as Err:
+        except (FileNotFoundError, JSONDecodeError) as Err:
             logger.error(Err)
-
-        with open("./src/db/base/passwords.json", "w") as data_file:
-            json.dump(data, data_file, indent=4)
+            with open("./src/db/base/passwords.json", "w") as data_file:
+                data_file.write("{}")
+        else:
+            with open("./src/db/base/passwords.json", "w") as data_file:
+                json.dump(data, data_file, indent=4)
 
     @staticmethod
     def get_pass(website):
@@ -43,6 +49,8 @@ class PassDBManager:
                 else:
                     return None, None
 
-        except FileNotFoundError as Err:
+        except (FileNotFoundError, JSONDecodeError) as Err:
             logger.error(Err)
-            open("./src/db/base/passwords.json", "w").close()
+            with open("./src/db/base/passwords.json", "w") as data_file:
+                data_file.write("{}")
+            return None, None
