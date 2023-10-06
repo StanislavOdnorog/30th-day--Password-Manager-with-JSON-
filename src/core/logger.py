@@ -5,7 +5,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 console_handler = logging.StreamHandler()
-file_handler = logging.FileHandler(".log", mode="a")
+file_handler = logging.FileHandler("./logs/.log", mode="a")
 
 console_handler.setLevel(logging.DEBUG)
 file_handler.setLevel(logging.DEBUG)
