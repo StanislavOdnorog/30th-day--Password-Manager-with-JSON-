@@ -9,14 +9,16 @@ from obj.my_objects import *
 
 
 class PassManager:
-    def __init__(self, title="Program", padding=PADDING, bg="white"):
+    def __init__(self, title="Program", padding=50, bg="white"):
         self.window = Tk()
+        self.window.resizable(False, False)
+
         self.window.title(title)
         self.window.config(padx=padding, pady=padding)
         self.window.config(bg=bg)
         self.canvas = MyCanvas()
         self.lock_img = PhotoImage(file="./media/lock.png")
-        self.canvas.create_image(WIDTH / 2, HEIGHT / 2, image=self.lock_img)
+        self.canvas.create_image(150, 150, image=self.lock_img)
         self.objects = {}
 
     def configure_objects(self):

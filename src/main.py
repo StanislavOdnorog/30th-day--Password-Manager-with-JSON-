@@ -1,4 +1,5 @@
-from manager import PassManager
+from pass_manager import PassManager
+
 
 class PassManagerMain:
     def __init__(self):

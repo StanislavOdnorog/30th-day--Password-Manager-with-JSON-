@@ -1,7 +1,5 @@
 from tkinter import *
 
-from constants import *
-
 
 class MyLabel(Label):
     def __init__(self, bg="white", pady=5, **kwargs):
@@ -15,7 +13,7 @@ class MyButton(Button):
 
 class MyCanvas(Canvas):
     def __init__(
-        self, width=WIDTH, height=HEIGHT, bg="white", highlightthickness=0, **kwargs
+        self, width=300, height=300, bg="white", highlightthickness=0, **kwargs
     ):
         super().__init__(
             width=width,
