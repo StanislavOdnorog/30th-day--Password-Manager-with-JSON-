@@ -2,7 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=venv,visualstudiocode,python
 
 ### Personal Data ###
-*/passwords.json
+passwords.json
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
