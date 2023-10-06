@@ -1,7 +1,10 @@
 # PythonBootcamp-PasswordManagerJSON
+## Simple JSON Password Manager
 
-### Simple JSON Password Manager
+### Possibilities
+- Add
+- Search
+- Delete
+- Update
 
-## Add, search, delete and update your passwords
-
-# I know that it is dumb af but still, might be interesting to look in the future
+*I know that it is dumb af but still, might be interesting to look back in the future :D*
